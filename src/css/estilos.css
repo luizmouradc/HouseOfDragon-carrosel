@@ -1,0 +1,116 @@
+body{
+    font-family: "Poppins", sans-serif; /*totos os elementos estao pegando a donte poppins*/
+    /*background-color: aqua; Podemos usar pra saber one estamos mexendo*/
+    max-width: 1280px; /*define a largura maxima, que no caso vai ser 1280 px*/
+    margin: 0 auto; 
+}
+
+.carrossel{
+    position: fixed; /*Deixa a imagem fixa*/
+
+    /*Psisionar para que ocupe 100 porcento da tela*/
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1; /*Faz com que os texto apareca*/
+}
+
+/*Esconder os conteudos*/
+.informacoes{
+    display: none; 
+}
+
+/*Mostrar o primeiro dragrao*/
+.informacoes.ativa{
+    display: block;
+}
+
+/*Centralizar o conteudo*/
+.conteudo{
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-evenly;
+    min-height: 100vh; /*dando uma altura minima de 100vh*/
+}
+
+.informacoes h1{
+    font-size: 35px;
+    color: #ffffff;
+    margin-bottom: 80px; /*separa o p do h1*/
+    font-family: "GOT";
+    letter-spacing: 8px; /*Da um espaçamento entre as letras*/
+}
+
+/*Adicionando a fonte GOT*/
+@font-face {
+    font-family: "GOT";
+    src: url(../fontes/GOT.ttf);
+}
+
+.informacoes .descricao{
+    width: 49%; /*Diminuir a largura*/
+    font-size: 24px;
+    color: #ffffff;
+    line-height: 40px; /*altura das linhas*/
+    
+    /*Da um respiro pra ficar mais facil de ler caso tenho um texto bem maior*/
+    height: 300px;
+    overflow: auto;
+    padding-right: 15px;
+}
+
+.botoes-carrossel{
+    display: flex; /*Ua obs, os botoes nao estava centralizando e eu nao encotrava o erro ate que vi que tinha escrivo "flax" ao inves de "flex"*/
+    justify-content: center;
+    gap: 20px;
+}
+
+.botoes-carrossel .botao{
+    background-color: #ffffff;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    border-color: #ffffff;
+}
+
+/*Quando o botao tiver selecionado ele ira ficar verde*/
+.botoes-carrossel .botao.selecionado{
+    background-color: #1d8346;
+}
+
+/*para imagem ser melhor*/
+.imagem{
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /*nao distorce e ocupa toda a largura*/
+    display: none;
+}
+
+.imagem.ativa{
+    display: block;
+    animation: mudarImagem 0.7s;
+}
+
+@keyframes mudarImagem{
+    from{
+        opacity: 0.85;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+/*Colocar um "efeito na imagem"*/
+main:after{
+    content: "";
+    min-height: 100vh;
+    width: 100vw;
+    background-color: blue;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: linear-gradient(120deg, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0.05926120448179273) 50%, rgba(0, 0, 0, 1) 90%);
+    z-index: -1;
+}
